@@ -1,8 +1,8 @@
 *** index.js ***
 reducers: 
--feeling 
--understanding 
--supported 
+-feel
+-understand 
+-support
 -comment
 ___________________________________________________
 *** App.js ***
