@@ -13,41 +13,41 @@ Router
 Header -"Feedback"
 
 Routes:
--Question1 
+-FeelingPage
     -1 of 4 pages 
     -How are you feeling today? 
         -REQUIRED 
         -"Rating" from Material UI 
     -Next button 
-        -dispatch to "feeling" reducer 
+        -dispatch to "feeling" reducer 'SET_FEEL'
         -lead to Question2
 
--Question2 
+-Understanding Page
     -2 of 4 pages 
     -How well are you understanding the content? 
         -REQUIRED 
         -"Rating" from Material UI 
     -Next button 
-        -dispatch to "understanding" reducer 
+        -dispatch to "understanding" reducer 'SET_UNDERSTAND'
         -lead to Question3
 
--Question3 
+-SupportedPage
     -3 of 4 pages 
     -How well are you being supported? 
         -REQUIRED 
         -"Rating" from Material UI 
     -Next button 
-        -dispatch to "supported" reducer 
+        -dispatch to "supported" reducer 'SET_SUPPORT'
         -lead to Question4
 
--Question4 
+-CommentPage
     -4 of 4 pages 
     -Any comments you want to leave? 
         -NOT required "Text Field" from Material UI 
-    -Next button -dispatch to "comment" reducer 
+    -Next button -dispatch to "comment" reducer 'SET_COMMENT'
         -lead to Review
 
--Review 
+-ReviewPage 
     -useSelect to display all previous answers 
     -User cannnot change input or go back. 
     -Submit button 
