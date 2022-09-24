@@ -1,6 +1,10 @@
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
 
 function ReviewPage() {
     const history = useHistory();
@@ -10,7 +14,7 @@ function ReviewPage() {
     const support = useSelector(store => store.supportReducer);
     const comments = useSelector(store => store.commentReducer);
 
-    console.log(`feeling: ${feeling}, understanding: ${understanding}, support: ${support}, comments: ${comments}`);
+    // console.log(`feeling: ${feeling}, understanding: ${understanding}, support: ${support}, comments: ${comments}`);
     const [responses, setResponses] = useState({
             feeling,
             understanding,
@@ -18,17 +22,28 @@ function ReviewPage() {
             comments
     })
 
+    const handleNext = event => {
+        event.preventDefault();
+
+        // TODO: POST TO DATABASE
+        history.push("/Confirm")
+    }
+
     return (
         <>
-        <p>Here is the ReviewPage</p>
-        <p>How are you feeling today?</p>
-        <p>{responses.feeling}/5</p>
-        <p>How well are you understanding the content?</p>
-        <p>{responses.understanding}/5</p>
-        <p>How well are you being supported?</p>
-        <p>{responses.support}/5</p>
+        <Typography component="legend">How are you feeling today?</Typography>
+        <Rating name="read-only" value={responses.feeling} readOnly />
+
+        <Typography component="legend">How well are you understanding the content?</Typography>
+        <Rating name="read-only" value={responses.understanding} readOnly />
+
+        <Typography component="legend">How well are you being supported?</Typography>
+        <Rating name="read-only" value={responses.support} readOnly />
+
         <p>Any comments you want to leave?</p>
-        <p>{responses.comments}/5</p>
+        <p>{responses.comments}</p>
+        
+        <Button onClick={handleNext} variant="contained">Submit</Button>
         </>
     )
 }
