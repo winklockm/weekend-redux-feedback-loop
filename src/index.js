@@ -12,28 +12,28 @@ import logger from 'redux-logger';
 // set up reducers
 const feelReducer = (state = (0), action) => {
     if(action.type === 'SET_FEEL') {
-        return state;
+        return state + action.payload;
     }
     return state;
 }
 
 const understandReducer = (state = (0), action) => {
     if(action.type === 'SET_UNDERSTAND') {
-        return state;
+        return state + action.payload;
     }
     return state;
 }
 
 const supportReducer = (state = (0), action) => {
     if(action.type === 'SET_SUPPORT') {
-        return state;
+        return state + action.payload;
     }
     return state;
 }
 
-const commentReducer = (state = (0), action) => {
+const commentReducer = (state = (''), action) => {
     if(action.type === 'SET_COMMENT') {
-        return state;
+        return state + action.payload;
     }
     return state;
 }
