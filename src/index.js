@@ -41,14 +41,14 @@ const commentReducer = (state = (''), action) => {
 // set up redux store
 const storeInstance = createStore(
     combineReducers(
-        feelReducer,
-        understandReducer,
-        supportReducer,
-        commentReducer
+        {
+            feelReducer,
+            understandReducer,
+            supportReducer,
+            commentReducer
+        }
     ),
-    applyMiddleware(
-        logger
-    )
+    applyMiddleware(logger)
 );
 
 // add Provider
