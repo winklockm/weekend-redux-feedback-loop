@@ -7,15 +7,15 @@ import Typography from '@mui/material/Typography';
 function UnderstandingPage() {
     const [value, setValue] = useState(0);
     const dispatch = useDispatch();
+    const history = useHistory();
     const handleNext = event => {
         event.preventDefault();
         const action = {
             type: 'SET_UNDERSTAND',
-            payload: {
-                value,
-            }
+            payload: value,
         }
         dispatch(action)
+        history.push("/QuestionThree")
         // TODO: NEXT button leads to 
         // SupportedPage
         // TODO: clear inputs

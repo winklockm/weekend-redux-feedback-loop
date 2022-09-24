@@ -7,17 +7,16 @@ import Typography from '@mui/material/Typography';
 function FeelingPage() {
     const [value, setValue] = useState(0);
     const dispatch = useDispatch();
+    const history = useHistory();
     const handleNext = event => {
         event.preventDefault();
+        // action is an object
         const action = {
             type: 'SET_FEEL',
-            payload: {
-                value,
-            }
-        }
+            payload: value,
+        };
         dispatch(action)
-        // TODO: NEXT button leads to 
-        // UnderstandingPage
+        history.push("/QuestionTwo")
         // TODO: clear inputs
     }
 

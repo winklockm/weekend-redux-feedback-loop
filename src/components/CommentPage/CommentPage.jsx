@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 function CommentPage() {
     const [value, setValue] = useState('');
     const dispatch = useDispatch();
+    const history = useHistory();
     const handleChange = (event) => {
         setValue(event.target.value);
     };
@@ -14,11 +15,10 @@ function CommentPage() {
         event.preventDefault();
         const action = {
             type: 'SET_COMMENT',
-            payload: {
-                value,
-            }
+            payload: value,
         }
         dispatch(action)
+        history.push("/Review")
         // TODO: NEXT button leads to 
         // ReviewPage
         // TODO: clear inputs

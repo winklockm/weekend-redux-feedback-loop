@@ -7,15 +7,15 @@ import Typography from '@mui/material/Typography';
 function SupportedPage() {
     const [value, setValue] = useState(0);
     const dispatch = useDispatch();
+    const history = useHistory();
     const handleNext = event => {
         event.preventDefault();
         const action = {
             type: 'SET_SUPPORT',
-            payload: {
-                value,
-            }
+            payload: value,
         }
         dispatch(action)
+        history.push("/QuestionFour")
         // TODO: NEXT button leads to 
         // CommentPage
         // TODO: clear inputs

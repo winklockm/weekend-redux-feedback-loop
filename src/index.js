@@ -10,47 +10,52 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 // set up reducers
-const feelReducer = (state = (''), action) => {
+const feelReducer = (state = (0), action) => {
     if(action.type === 'SET_FEEL') {
-        return action.payload;
+        return state;
     }
-    return state
+    return state;
 }
 
-const understandReducer = (state = (''), action) => {
+const understandReducer = (state = (0), action) => {
     if(action.type === 'SET_UNDERSTAND') {
-        return action.payload;
+        return state;
     }
-    return state
+    return state;
 }
 
-const supportReducer = (state = (''), action) => {
+const supportReducer = (state = (0), action) => {
     if(action.type === 'SET_SUPPORT') {
-        return action.payload;
+        return state;
     }
-    return state
+    return state;
 }
 
-const commentReducer = (state = (''), action) => {
+const commentReducer = (state = (0), action) => {
     if(action.type === 'SET_COMMENT') {
-        return action.payload;
+        return state;
     }
-    return state
+    return state;
 }
 
 // set up redux store
 const storeInstance = createStore(
     combineReducers(
+        // this is an object. feelReducer: feelReducer
         {
             feelReducer,
             understandReducer,
             supportReducer,
-            commentReducer
+            commentReducer,
         }
     ),
     applyMiddleware(logger)
 );
 
 // add Provider
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={storeInstance}>
+        <App />
+    </Provider>, 
+    document.getElementById('root'));
 registerServiceWorker();
