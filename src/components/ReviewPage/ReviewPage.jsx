@@ -7,6 +7,10 @@ import axios from 'axios';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
 
 function ReviewPage() {
     
@@ -34,29 +38,53 @@ function ReviewPage() {
             data: feedbackObject
         }).then(response => {
             console.log('POST successful!');
+            // *********** NEED TO RESET REDUCERS TO STATE
             history.push("/Confirm")
         }).catch(error => {
             console.log('Feedback not submitted due to:', error);
             alert('Feedback submission error. Try again later.');
         });
-    }
+    };
+
+     // set card properties
+    const cardStyle = {
+        display: "block",
+        transitionDuration: "0.3s",
+        
+    };
 
     return (
-        <>
-        <Typography component="legend">How are you feeling today?</Typography>
-        <Rating name="read-only" value={feedbackObject.feeling} readOnly />
-
-        <Typography component="legend">How well are you understanding the content?</Typography>
-        <Rating name="read-only" value={feedbackObject.understanding} readOnly />
-
-        <Typography component="legend">How well are you being supported?</Typography>
-        <Rating name="read-only" value={feedbackObject.support} readOnly />
-
-        <p>Any comments you want to leave?</p>
-        <p>{feedbackObject.comments}</p>
-        
-        <Button onClick={handleNext} variant="contained">Submit</Button>
-        </>
+        <Container maxWidth="sm">
+            <Card style={cardStyle}>
+                <CardContent>
+                    <Stack
+                        direction="column"
+                        justifyContent="space-evenly"
+                        alignItems="center"
+                        spacing={2}>
+                        <div>
+                            <Typography component="legend">How are you feeling today?</Typography>
+                            <Rating name="read-only" value={feedbackObject.feeling} readOnly />
+                        </div>
+                        <div>
+                            <Typography component="legend">How well are you understanding the content?</Typography>
+                            <Rating name="read-only" value={feedbackObject.understanding} readOnly />
+                        </div>
+                        <div>
+                            <Typography component="legend">How well are you being supported?</Typography>
+                            <Rating name="read-only" value={feedbackObject.support} readOnly />
+                        </div>
+                        <div>
+                            <Container maxWidth="sm">
+                                <Typography component="legend">Any comments you want to leave?</Typography>
+                                <Typography component="legend">{feedbackObject.comments}</Typography>
+                            </Container>
+                        </div>
+                        <Button onClick={handleNext} variant="contained">Submit Feedback</Button>
+                    </Stack>
+                </CardContent>
+            </Card>
+        </Container>
     )
 }
 

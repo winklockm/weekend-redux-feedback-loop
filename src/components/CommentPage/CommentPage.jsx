@@ -6,6 +6,10 @@ import {useHistory} from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
 
 function CommentPage() {
     
@@ -30,20 +34,39 @@ function CommentPage() {
         history.push("/Review")
     };
 
+    // set card properties
+    const cardStyle = {
+        display: "block",
+        transitionDuration: "0.3s",
+        height: "250px"
+    };
+
     return (
-        <form>
-            <Typography component="legend">Any comments you want to leave?</Typography>
-            <TextField
-                id="outlined-multiline-static"
-                label="Comments"
-                multiline
-                rows={4}
-                onChange={handleChange}
-            />
-            <div>
-                <Button onClick={handleNext} variant="contained">Next</Button>
-            </div>
-        </form>
+        <Container maxWidth="sm">
+            <Card style={cardStyle}>
+                <CardContent>
+                    <Stack 
+                        direction="column"
+                        justifyContent="space-evenly"
+                        alignItems="center"
+                        spacing={2}>
+                        <Typography variant="h6" component="div">
+                            Any comments you want to leave?
+                        </Typography>
+                        <TextField
+                            className="comments"
+                            id="outlined-multiline-static"
+                            label="Comments"
+                            multiline
+                            fullWidth
+                            rows={3}
+                            onChange={handleChange}
+                        />
+                        <Button onClick={handleNext} variant="contained">Next</Button>
+                    </Stack>
+                </CardContent>
+            </Card>
+        </Container>
     );
 }
 
