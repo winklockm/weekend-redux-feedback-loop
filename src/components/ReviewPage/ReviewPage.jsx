@@ -15,7 +15,7 @@ import Stack from '@mui/material/Stack';
 function ReviewPage() {
     
     const history = useHistory();
-    
+
     // pull in reducers
     const feeling = useSelector(store => store.feelReducer);
     const understanding = useSelector(store => store.understandReducer);
@@ -38,7 +38,6 @@ function ReviewPage() {
             data: feedbackObject
         }).then(response => {
             console.log('POST successful!');
-            // *********** NEED TO RESET REDUCERS TO STATE
             history.push("/Confirm")
         }).catch(error => {
             console.log('Feedback not submitted due to:', error);
@@ -50,7 +49,6 @@ function ReviewPage() {
     const cardStyle = {
         display: "block",
         transitionDuration: "0.3s",
-        
     };
 
     return (

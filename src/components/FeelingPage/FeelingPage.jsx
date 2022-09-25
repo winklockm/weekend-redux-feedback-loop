@@ -43,7 +43,7 @@ function FeelingPage() {
 
     return (
             <Container maxWidth="sm">
-                <Card style={cardStyle}>
+                <Card className="card" style={cardStyle}>
                     <CardContent>
                         <Stack 
                             direction="column"

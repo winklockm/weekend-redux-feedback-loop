@@ -12,9 +12,22 @@ import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
 // import router
 import { HashRouter as Router, Route, Link} from 'react-router-dom';
 
-function App() {
+// import mui theme
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { teal } from '@mui/material/colors';
 
+function App() {
+  
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: teal[500],
+      },
+    },
+  });
+  
   return (
+    <ThemeProvider theme={theme}>
     <div className='App'>
       <Router>
         <header className='App-header'>
@@ -37,9 +50,10 @@ function App() {
         </Route>
         <Route exact path="/Confirm">
           <ConfirmationPage />
-        </Route>
+        </Route>       
       </Router>
     </div>
+    </ThemeProvider>
   );
 }
 
