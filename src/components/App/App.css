@@ -3,11 +3,12 @@
 }
 
 .App-header {
-  background-color: #033076;
   min-height: 70px;
   padding: 20px;
   color: white;
   margin-bottom: 20px;
+  background-color: #499a9a;
+  letter-spacing: 3px;
 }
 
 .App-title {
@@ -20,4 +21,12 @@
 
 h4 {
   font-style: italic;
+}
+
+.rating {
+  margin-top: 2px;
+}
+
+.comments {
+  margin-top: 20px;
 }
