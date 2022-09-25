@@ -1,18 +1,24 @@
 import {useHistory} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 import Button from '@mui/material/Button';
 
 function ConfirmationPage() {
+
     const history = useHistory();
-    const handleNext = event => {
+    const dispatch = useDispatch();
+
+    const startOver = event => {
         event.preventDefault();
+        const action = {
+            type: 'RESET'
+        }
         history.push("/")
-        // TODO: clear inputs
     }
 
     return (
         <>
         <p>Success! Your feedback has been submitted.</p>
-        <Button onClick={handleNext} variant="contained">Take Survey Again</Button>
+        <Button onClick={startOver} variant="contained">Take Survey Again</Button>
         </>
     )
 }

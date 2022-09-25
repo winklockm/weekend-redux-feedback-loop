@@ -21,26 +21,39 @@ const feelReducer = (state = (0), action) => {
     if(action.type === 'SET_FEEL') {
         return state + action.payload;
     }
+    if(action.type === 'RESET') {
+        console.log('reset feelReducer to:', state)
+        return 0;
+    }
     return state;
 }
 
 const understandReducer = (state = (0), action) => {
     if(action.type === 'SET_UNDERSTAND') {
-        return state + action.payload;
+        return action.payload;
+    }
+    if(action.type === 'RESET') {
+        return 0;
     }
     return state;
 }
 
 const supportReducer = (state = (0), action) => {
     if(action.type === 'SET_SUPPORT') {
-        return state + action.payload;
+        return action.payload;
+    }
+    if(action.type === 'RESET') {
+        return 0;
     }
     return state;
 }
 
-const commentReducer = (state = (''), action) => {
+const commentReducer = (state = [], action) => {
     if(action.type === 'SET_COMMENT') {
-        return state + action.payload;
+        return action.payload;
+    }
+    if(action.type === 'RESET') {
+        return [];
     }
     return state;
 }

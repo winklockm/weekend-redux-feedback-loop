@@ -12,7 +12,6 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 
 function FeelingPage() {
-    
     const dispatch = useDispatch();
     const history = useHistory();
 
