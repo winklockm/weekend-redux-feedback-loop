@@ -22,12 +22,17 @@ function FeelingPage() {
     // when next button is clicked value is dispatched
     const handleNext = event => {
         event.preventDefault();
-        const action = {
-            type: 'SET_FEEL',
-            payload: value,
-        };
-        dispatch(action)
-        history.push("/QuestionTwo")
+        if(value > 0) {
+            const action = {
+                type: 'SET_FEEL',
+                payload: value,
+            };
+            dispatch(action)
+            history.push("/QuestionTwo")
+        }
+        else {
+            alert('Please select a value');
+        }
     };
 
     // set card properties

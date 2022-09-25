@@ -22,12 +22,17 @@ function UnderstandingPage() {
     // when next button is clicked value is dispatched
     const handleNext = event => {
         event.preventDefault();
-        const action = {
-            type: 'SET_UNDERSTAND',
-            payload: value,
+        if(value > 0) {
+            const action = {
+                type: 'SET_UNDERSTAND',
+                payload: value,
+            }
+            dispatch(action)
+            history.push("/QuestionThree")
         }
-        dispatch(action)
-        history.push("/QuestionThree")
+        else {
+            alert('Please select a value');
+        }
     };
 
     // set card properties

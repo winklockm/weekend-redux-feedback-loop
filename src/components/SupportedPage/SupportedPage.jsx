@@ -22,12 +22,17 @@ function SupportedPage() {
     // when next button is clicked value is dispatched
     const handleNext = event => {
         event.preventDefault();
-        const action = {
-            type: 'SET_SUPPORT',
-            payload: value,
+        if(value > 0) {
+            const action = {
+                type: 'SET_SUPPORT',
+                payload: value,
+            }
+            dispatch(action)
+            history.push("/QuestionFour")
         }
-        dispatch(action)
-        history.push("/QuestionFour")
+        else {
+            alert('Please select a value');
+        }
     };
 
     // set card properties
