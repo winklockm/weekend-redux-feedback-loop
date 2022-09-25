@@ -1,13 +1,15 @@
 import {useState} from 'react';
 import {useSelector} from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
+
+// import material ui
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import axios from 'axios';
-
 
 function ReviewPage() {
+    
     const history = useHistory();
     
     // pull in reducers
@@ -24,6 +26,7 @@ function ReviewPage() {
         comments: comments
     });
 
+    // on button click POST feedback
     const handleNext = () => {
         axios({
             method: 'POST',

@@ -1,13 +1,21 @@
-import { useState } from 'react';
-import { useDispatch} from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom';
+
+// import material ui
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 function SupportedPage() {
-    const [value, setValue] = useState(0);
+    
     const dispatch = useDispatch();
     const history = useHistory();
+    
+    // value is set when star rating is changed
+    const [value, setValue] = useState(0);
+
+    // when next button is clicked value is dispatched
     const handleNext = event => {
         event.preventDefault();
         const action = {
@@ -16,26 +24,23 @@ function SupportedPage() {
         }
         dispatch(action)
         history.push("/QuestionFour")
-        // TODO: NEXT button leads to 
-        // CommentPage
-        // TODO: clear inputs
-    }
+    };
 
     return (
-        <form onSubmit={handleNext}>
-        <Typography component="legend">How well are you being supported?</Typography>
-        <Rating
-            name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-            setValue(newValue);
-        }}
-        />
-        <div>
-            <button>Next</button>
-        </div>
+        <form>
+            <Typography component="legend">How well are you being supported?</Typography>
+            <Rating
+                name="simple-controlled"
+                value={value}
+                onChange={(event, newValue) => {
+                setValue(newValue);
+                }}
+            />
+            <div>
+                <Button onClick={handleNext} variant="contained">Next</Button>
+            </div>
         </form>
-    )
+    );
 }
 
 export default SupportedPage;

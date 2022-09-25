@@ -1,15 +1,22 @@
+// import react
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App/App';
-import registerServiceWorker from './registerServiceWorker';
 
 // import redux
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux'; 
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux'; 
 import logger from 'redux-logger';
 
-// set up reducers
+// import app component
+import App from './components/App/App';
+
+// import css
+import './index.css';
+
+// import serviceworker
+import registerServiceWorker from './registerServiceWorker';
+
+// set up reducers - payload is star rating or comment
 const feelReducer = (state = (0), action) => {
     if(action.type === 'SET_FEEL') {
         return state + action.payload;
@@ -38,10 +45,9 @@ const commentReducer = (state = (''), action) => {
     return state;
 }
 
-// set up redux store
+// set up redux store and combine reducers into one object
 const storeInstance = createStore(
     combineReducers(
-        // this is an object. feelReducer: feelReducer
         {
             feelReducer,
             understandReducer,
@@ -52,7 +58,7 @@ const storeInstance = createStore(
     applyMiddleware(logger)
 );
 
-// add Provider
+// wrap app in provider
 ReactDOM.render(
     <Provider store={storeInstance}>
         <App />

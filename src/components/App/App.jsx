@@ -1,6 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import './App.css';
+
+// import components
 import FeelingPage from '../FeelingPage/FeelingPage';
 import UnderstandingPage from '../UnderstandingPage/UnderstandingPage';
 import SupportedPage from '../SupportedPage/SupportedPage';
@@ -8,8 +9,7 @@ import CommentPage from '../CommentPage/CommentPage';
 import ReviewPage from '../ReviewPage/ReviewPage';
 import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
 
-// import Router
-import { useDispatch, useSelector } from 'react-redux';
+// import router
 import { HashRouter as Router, Route, Link} from 'react-router-dom';
 
 function App() {
